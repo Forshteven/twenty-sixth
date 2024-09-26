@@ -2,14 +2,14 @@ class House:
     houses_history = []
 
     def __new__(cls, *args):
-        instance = object.__new__(cls)
+        instance = super(House, cls).__new__(cls)
+        cls.houses_history.append(args[0])
         return instance
 
     def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
-        self.houses_history.append(name)
-
+        
     def go_to(self, new_flor):
         if new_flor <= self.number_of_floors:
             for i in range(1, new_flor + 1):
